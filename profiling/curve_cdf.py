@@ -63,7 +63,7 @@ def fit_cdf(x, c):
 
 def get_latency_e2e(path: str, graph_type: str, service_name: str):
     latency_list = pd.DataFrame()
-    for epoch in range(1, 6):
+    for epoch in range(1, 4):
         file_path = f"{path}/epoch_{epoch}/{graph_type}/raw_data.csv"
         data = pd.read_csv(file_path)
         data = data[~data["childMS"].isin(data["parentMS"])].reset_index()
@@ -81,7 +81,7 @@ def get_latency_e2e(path: str, graph_type: str, service_name: str):
 
 def get_latency(path: str, graph_type: str, service_name: str):
     latency_list = pd.DataFrame()
-    for epoch in range(1, 6):
+    for epoch in range(1, 4):
         file_path = f"{path}/epoch_{epoch}/{graph_type}/raw_data.csv"
         data = pd.read_csv(file_path)
         data = (
@@ -194,7 +194,7 @@ def collect_parameters(data_folder: str, service_name: str):
     latency_range_list = []
     skew_list = []
     p95_list = []
-    workloads = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+    workloads = [30, 60]
     for workload in workloads:
         paras, ml, loss_fit, loss_ml, data_num, latency_range, skew, p95 = fit(
             data_folder, workload, service_name

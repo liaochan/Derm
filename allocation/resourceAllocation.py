@@ -31,7 +31,7 @@ class OptimizationProblem:
 
     def dataProcessing(self):
         # transform from one MS to n MS
-        self.df["a"] = self.df["a1"] / self.df.n  ## 试试ml拟合的
+        self.df["a"] = self.df["a1"] / self.df.n
         self.df["b"] = self.df["b1"] / self.df.n
 
         # the range of MS w
@@ -365,7 +365,7 @@ class OptimizationProblem:
             return 0
 
 
-sla_list = [550, 500, 450, 400, 350, 300, 250, 200]
+sla_list = [550]
 workload_list = pd.read_csv("data/workload_ceil.csv")["workload"].tolist()
 alloc = []
 counter = 0
@@ -378,4 +378,5 @@ for i in workload_list:
         alloc.append(res)
 alloc = np.array(alloc)
 alloc.sort()
+print(alloc)
 # Allocation results will be used for deployment...

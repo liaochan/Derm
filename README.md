@@ -25,7 +25,7 @@ Profiling & Traning.
 ```bash
 cd profiling
 python curve_fit.py
-python line_fit_exp.py
+python -W ignore line_fit_exp.py
 ```
 
 Graph Prediction
@@ -40,7 +40,7 @@ python predict.py test
 Compute Allocation Scheme
 ```bash
 cd allocation
-python resourceAllocation.py
+python -W ignore resourceAllocation.py
 ```
 
 ## Experiment Environment

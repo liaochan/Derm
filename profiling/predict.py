@@ -6,6 +6,7 @@ import torch.optim as optim
 from sklearn.model_selection import train_test_split
 import torch.nn.functional as F
 import time
+import os
 
 import torch
 import torch.nn as nn
@@ -95,23 +96,15 @@ def train():
         
         print(f"Epoch [{epoch + 1}/{num_epochs}], Loss: {loss.item():.4f}")
 
+    os.system("mkdir -p models")
     torch.save(model.state_dict(), "models/graph_predict.pt")
 
 
 def test():
     model.load_state_dict(torch.load("models/graph_predict.pt"))
-    sum_ = 0
-    for name, param in model.named_parameters():
-        mul = 1
-        for size_ in param.shape:
-            mul *= size_
-        sum_ += mul
-        print("%14s : %s" % (name, param.shape))
-
-    print("Parameters count:", sum_)
     test_output = model(x_test)
     loss = criterion(test_output, y_test)
-    print(loss)
+    print(f"Loss: {float(loss)}")
 
 
 if __name__ == "__main__":
@@ -123,3 +116,5 @@ if __name__ == "__main__":
         train()
         end = time.perf_counter()
         print(f"Train time: {end - start} seconds")
+    if module == "test":
+        test()
