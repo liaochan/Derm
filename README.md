@@ -3,46 +3,6 @@ We present Derm, a SLA-aware Resource Management for Highly Dynamic Microservice
 
 Due to time constraints, we have only uploaded the core codes for profiling, training, and allocation optimization. The complete version, including detailed evaluation, will be published in the near future. Stay tuned for updates on our GitHub repository.
 
-## Content
-
-The folder structure is organized as follow:
-```
-profiling
-├─data // Sample data that we used for profiling.
-├─curve_cdf.py // Fit distribution of microservice latency.
-├─line_fit_exp.py // Fit corelation of \lambda and \omega.
-└─predict.py // Predict dynamic graph.
-
-allocation
-├─data // Our profiling output.
-├─end2endLatencyUpdate.py // Used by resourceAllocation.py.
-└─resourceAllocation.py // Core of resource allocation algorithms.
-```
-
-Below we also provide the sample code usage:
-
-Profiling & Traning.
-```bash
-cd profiling
-python curve_fit.py
-python -W ignore line_fit_exp.py
-```
-
-Graph Prediction
-```bash
-cd profiling
-# Training
-python predict.py train
-# Testing
-python predict.py test
-```
-
-Compute Allocation Scheme
-```bash
-cd allocation
-python -W ignore resourceAllocation.py
-```
-
 ## Experiment Environment
 Machine Specifications:
 | Resource Type | Value |
@@ -69,4 +29,44 @@ Software / Dependencies:
 You can install all python dependencies by running the following command:
 ```bash
 pip install -r requirements.txt
+```
+
+## Content
+
+The folder structure is organized as follow:
+```
+profiling
+├─data // Sample data that we used for profiling.
+├─curve_cdf.py // Fit distribution of microservice latency.
+├─line_fit_exp.py // Fit corelation of \lambda and \omega.
+└─predict.py // Predict dynamic graph.
+
+allocation
+├─data // Our profiling output.
+├─end2endLatencyUpdate.py // Used by resourceAllocation.py.
+└─resourceAllocation.py // Core of resource allocation algorithms.
+```
+
+Below we also provide the sample code usage:
+
+Profiling & Traning.
+```bash
+cd profiling
+python curve_cdf.py
+python -W ignore line_fit_exp.py
+```
+
+Graph Prediction
+```bash
+cd profiling
+# Training
+python predict.py train
+# Testing
+python predict.py test
+```
+
+Compute Allocation Scheme
+```bash
+cd allocation
+python -W ignore resourceAllocation.py
 ```

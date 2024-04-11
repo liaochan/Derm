@@ -168,4 +168,5 @@ invoke_times = [
 
 line_fit = LineFit(ms_list, chain, invoke_times, pod_num, graph_ratio)
 data = line_fit.get_params()
-data.to_csv("data/line_fit.csv", index=False)
+data.to_csv("data/all_pars.csv", index=False)
+print("Sample results are saved in data/all_pars.csv")
